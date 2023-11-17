@@ -10,8 +10,8 @@ htmldir=./html
 header=$htmldir/header.html
 footer=$htmldir/footer.html
 index=./index.html
-mirrirdir=./mirrors
-url="https://cndaqiang.github.io/ipapush/"
+mirrirdir=mirrors
+url="https://cndaqiang.github.io/ipapush"
 workdir=$(pwd)
 #============== header
 echo "<!doctype html>" > $index
@@ -34,11 +34,11 @@ do
     sed -i  "s#CNDAQIANG_IPAURL#$link#g" $mirrirdir/link/${name}.plist
     sed -i  "s#BUNDLENAME#$name#g" $mirrirdir/link/${name}.plist
     sed -i  "s#TITLENAME#$name#g" $mirrirdir/link/${name}.plist
-    plistlink=./$mirrirdir/link/${name}.plist
+    plistlink=$url/$mirrirdir/link/${name}.plist
     #
     echo -e "<h2> $soft </h2>" >> $index
     #echo -e "<a href=\"$plistlink\">$name.plist</a><br>" >> $index  
-    echo -e "<a href="itms-services://?action=download-manifest\&url=$plistlink" id="text">安装 $name</a>" >> $index
+    echo -e "<a href="itms-services://?action=download-manifest\&url=$plistlink" id="text">安装 $name</a><br>" >> $index
     echo -e "<a href=\"$link\">$name.ipa</a><br>" >> $index  
     echo "<hr>" >> $index
 done
