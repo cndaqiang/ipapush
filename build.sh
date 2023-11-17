@@ -37,9 +37,9 @@ do
     plistlink=./$mirrirdir/link/${name}.plist
     #
     echo -e "<h2> $soft </h2>" >> $index
-    echo -e "<a href=\"$plistlink\">$name.plist</a><br>" >> $index  
+    #echo -e "<a href=\"$plistlink\">$name.plist</a><br>" >> $index  
+    echo -e "<a href="itms-services://?action=download-manifest\&url=$plistlink" id="text">安装 $name</a>" >> $index
     echo -e "<a href=\"$link\">$name.ipa</a><br>" >> $index  
-    echo -e "<a href="itms-services://?action=download-manifest\&url=$link" id="text">安装 $name</a>" >> $index
     echo "<hr>" >> $index
 done
 
