@@ -20,13 +20,14 @@ cat $header >> $index
 #软件下载链接
 echo -e "\n<body>" >> $index
 #
-echo -e "<h2> Mirror LSPosed web </h2>" >> $index 
+echo -e "<h2> Mirror ipa install web </h2>" >> $index 
 echo -e "<a href=\"https://cndaqiang.github.io/ipapush/\">github</a><br>" >> $index  
 #
 rm -rf $mirrirdir/link/*
 for input in $(ls $mirrirdir/config )
 do
     inputconfig=$mirrirdir/config/$input
+    #下载链接可以是http协议,以及局域网下载地址
     link=$(grep ^link $inputconfig | awk -F= '{ print $2 }' | head -1)
     name=$(echo $input | awk -F.plist '{ print $1 }')
     if [ ${link}_ == _ ]; then link=$url/$mirrirdir/soft/${name}.ipa; fi
