@@ -17,13 +17,13 @@
             <key>metadata</key>
             <dict>
                 <key>bundle-identifier</key>
-                <string>cndaqiang</string>
+                <string>BUNDLENAME</string>
                 <key>bundle-version</key>
                 <string>0.1</string>
                 <key>kind</key>
                 <string>software</string>
                 <key>title</key>
-                <string>sai</string>
+                <string>TITLENAME</string>
             </dict>
         </dict>
     </array>

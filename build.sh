@@ -11,7 +11,7 @@ header=$htmldir/header.html
 footer=$htmldir/footer.html
 index=./index.html
 mirrirdir=./mirrors
-url="./"
+url="https://cndaqiang.github.io/ipapush/"
 workdir=$(pwd)
 #============== header
 echo "<!doctype html>" > $index
@@ -21,20 +21,20 @@ cat $header >> $index
 echo -e "\n<body>" >> $index
 #
 echo -e "<h2> Mirror LSPosed web </h2>" >> $index 
-#echo -e "<a href=\"http://cndaqiang.gitee.io/packages\">gitee:更新快</a><br>" >> $index  
 echo -e "<a href=\"https://cndaqiang.github.io/ipapush/\">github</a><br>" >> $index  
-echo -e "<a href=\"http://blog.cndaqiang.workers.dev/ipapush/\">cloudflare&github</a><br>" >> $index  
 #
 rm -rf $mirrirdir/link/*
 for input in $(ls $mirrirdir/config )
 do
     inputconfig=$mirrirdir/config/$input
-    link=$(grep link $inputconfig | awk -F= '{ print $2 }' )
+    link=$(grep ^link $inputconfig | awk -F= '{ print $2 }' | head -1)
     name=$(echo $input | awk -F.plist '{ print $1 }')
     if [ ${link}_ == _ ]; then link=$url/$mirrirdir/soft/${name}.ipa; fi
     cp $workdir/example.plist  $mirrirdir/link/${name}.plist
     sed -i  "s#CNDAQIANG_IPAURL#$link#g" $mirrirdir/link/${name}.plist
-    plistlink=$url/$mirrirdir/link/${name}.plist
+    sed -i  "s#BUNDLENAME#$name#g" $mirrirdir/link/${name}.plist
+    sed -i  "s#TITLENAME#$name#g" $mirrirdir/link/${name}.plist
+    plistlink=./$mirrirdir/link/${name}.plist
     #
     echo -e "<h2> $soft </h2>" >> $index
     echo -e "<a href=\"$plistlink\">$name.plist</a><br>" >> $index  
