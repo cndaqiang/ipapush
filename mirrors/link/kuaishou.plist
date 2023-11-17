@@ -11,7 +11,7 @@
                     <key>kind</key>
                     <string>software-package</string>
                     <key>url</key>
-                    <string>./ipapush/mirrors/soft/快手_11.9.40.ipa</string>
+                    <string>http://10.127.1.27/ipa_back/kuaishou.ipa</string>
                 </dict>
             </array>
             <key>metadata</key>
